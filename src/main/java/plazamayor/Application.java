@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Application 
@@ -19,4 +22,18 @@ public class Application
     {
     	return log;
     }
+
+    public static String likeSanitize(String input) 
+    {
+	    return input
+	       .replace("!", "!!")
+	       .replace("%", "!%")
+	       .replace("_", "!_")
+	       .replace("[", "![");
+	} 
+
+	public static String errorMessage(String message) 
+    {
+	    return "{\"error\": \"" + message + "\"}";
+	}
 }
