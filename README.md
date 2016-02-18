@@ -9,3 +9,8 @@ App para gestionar pueblos, sus peñas y fiestas mayores.
 	Java
 	Spring
 	Hibernate
+
+**Usage**
+
+	./gradlew bootRun
+
