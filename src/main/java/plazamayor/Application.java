@@ -22,18 +22,4 @@ public class Application
     {
     	return log;
     }
-
-    public static String likeSanitize(String input) 
-    {
-	    return input
-	       .replace("!", "!!")
-	       .replace("%", "!%")
-	       .replace("_", "!_")
-	       .replace("[", "![");
-	} 
-
-	public static String errorMessage(String message) 
-    {
-	    return "{\"error\": \"" + message + "\"}";
-	}
 }

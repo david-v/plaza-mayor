@@ -1,21 +1,21 @@
 package plazamayor;
 
-public class Pueblo 
+public class Town 
 {
     private long id;
-    private String nombre; 
+    private String name; 
     private float lat;
     private float lon;
 
-    public Pueblo() 
+    public Town() 
     {
         
     }
 
-    public Pueblo(long id, String nombre, float lat, float lon) 
+    public Town(long id, String name, float lat, float lon) 
     {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
         this.lat = lat;
         this.lon = lon;
     }
@@ -23,8 +23,8 @@ public class Pueblo
     @Override
     public String toString() {
         return String.format(
-            "Pueblo[id=%d, nombre='%s']",
-            this.id, this.nombre
+            "Town[id=%d, name='%s']",
+            this.id, this.name
         );
     }
 
@@ -33,20 +33,20 @@ public class Pueblo
         return this.id;
     }
 
-    public Pueblo setId(long id)
+    public Town setId(long id)
     {
         this.id = id;
         return this;
     }
 
-    public String getNombre()
+    public String getName()
     {
-        return this.nombre;
+        return this.name;
     }
 
-    public Pueblo setNombre(String nombre)
+    public Town setName(String name)
     {
-        this.nombre = nombre;
+        this.name = name;
         return this;
     }
 
@@ -55,7 +55,7 @@ public class Pueblo
         return this.lat;
     }
 
-    public Pueblo setLat(float lat)
+    public Town setLat(float lat)
     {
         this.lat = lat;
         return this;
@@ -66,7 +66,7 @@ public class Pueblo
         return this.lon;
     }
 
-    public Pueblo setLon(float lon)
+    public Town setLon(float lon)
     {
         this.lon = lon;
         return this;
