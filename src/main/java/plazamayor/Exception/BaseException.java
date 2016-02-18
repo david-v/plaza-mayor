@@ -9,6 +9,7 @@ class BaseException extends Exception
 	public BaseException(String message)
 	{
 		super(message);
+		Application.getLogger().error(Integer.toString(statusCode) + ": " + message);
 	}
 
 	public int getStatusCode()
