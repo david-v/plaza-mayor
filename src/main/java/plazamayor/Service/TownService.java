@@ -1,13 +1,14 @@
 package plazamayor;
 
 import org.slf4j.Logger;
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.List;
 
 public class TownService
 {
-    public static List<Town> getTown(String townId, JdbcTemplate jdbcTemplate) throws TownNameTooShortException
+    public static List<Town> getTown(String townId, JdbcTemplate db) throws TownNameTooShortException
     {
         Logger log = Application.getLogger();
 
@@ -29,7 +30,7 @@ public class TownService
 
         log.info("Searching Town '" + townId + "'");
 
-        List<Town> queryResult = jdbcTemplate.query(
+        List<Town> queryResult = db.query(
             queryString,
             queryParams,
             (rs, rowNum) -> new Town(

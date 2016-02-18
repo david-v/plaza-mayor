@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("/fake-data")
 public class FakeDataController 
 {
-    private final AtomicLong counter = new AtomicLong();
-
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity createFakeTownsData() throws Exception
