@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class TownService
 {
-    public static List<Town> getTown(String townId, JdbcTemplate db) throws TownNameTooShortException
+    public static List<Town> getTown(String townId) throws TownNameTooShortException
     {
         Logger log = Application.getLogger();
+        JdbcTemplate db = DatabaseSingleton.getInstance().getDB();
 
         String queryString = "SELECT id, name, lat, lon FROM towns WHERE";
         Object[] queryParams;

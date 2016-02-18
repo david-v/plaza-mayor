@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class FakeDataService
 {
-    public static List<String> createFakeTownsData(JdbcTemplate db) throws Exception
+    public static List<String> createFakeTownsData() throws Exception
     {
+        JdbcTemplate db = DatabaseSingleton.getInstance().getDB();
+
         Logger log = Application.getLogger();
 
         log.info("Creating towns...");
