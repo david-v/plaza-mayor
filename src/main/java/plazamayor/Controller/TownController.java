@@ -31,7 +31,7 @@ public class TownController
         try {
             List<Town> towns = TownService.getTown(townId);
             return ResponseEntity.ok().body(towns);
-        } catch (TownNameTooShortException e) {
+        } catch (BaseException e) {
             return ResponseEntity.status(e.getStatusCode()).body(Utils.errorStringToJson(e.getMessage()));
         }
     }
