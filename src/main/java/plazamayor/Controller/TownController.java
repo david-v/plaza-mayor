@@ -26,10 +26,11 @@ public class TownController
     @RequestMapping(method = RequestMethod.GET, value = "/{townId}", produces = "application/json")
     public ResponseEntity getTown(@PathVariable("townId") String townId)
     {
+        TownService.injectDependencies(jdbcTemplate);
         try {
-            List<Town> towns = TownService.getTown(townId, jdbcTemplate);
+            List<Town> towns = TownService.getInstance().getTown(townId);
             return ResponseEntity.ok().body(towns);
-        } catch (TownNameTooShortException e) {
+        } catch (BaseException e) {
             return ResponseEntity.status(e.getStatusCode()).body(Utils.errorStringToJson(e.getMessage()));
         }
     }

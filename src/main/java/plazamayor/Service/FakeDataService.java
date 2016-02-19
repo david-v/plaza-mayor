@@ -10,21 +10,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class FakeDataService
 {
-    public static List<String> createFakeTownsData(JdbcTemplate db) throws Exception
+    private JdbcTemplate db;
+    private Logger log;
+    private static FakeDataService instance = null;
+
+    private FakeDataService(JdbcTemplate db)
     {
-        Logger log = Application.getLogger();
+        //Singleton
+        this.db = db;
+        this.log = Application.getLogger();
+    }
 
-        log.info("Creating towns...");
+    public static void injectDependencies(JdbcTemplate db)
+    {
+        if (instance == null) {
+            instance = new FakeDataService(db);
+        }
+    }
 
-        db.execute("DROP TABLE IF EXISTS towns");
-        db.execute("CREATE TABLE towns(id SERIAL, name VARCHAR(255), lat FLOAT, lon FLOAT)");
+    public static FakeDataService getInstance() throws BaseException
+    {
+        if (instance == null) {
+            throw new BaseException("Instance of FakeDataService not initialised yet");
+        }
+        return instance;
+    }
+
+    public List<String> createFakeTownsData() throws Exception
+    {
+        this.log.info("Creating towns...");
+
+        this.db.execute("DROP TABLE IF EXISTS towns");
+        this.db.execute("CREATE TABLE towns(id SERIAL, name VARCHAR(255), lat FLOAT, lon FLOAT)");
 
         List<String> townNames = Arrays.asList("Segura de Baños", "Salcedillo", "Maicas", "Vivel del Rio", "Martin del Rio");
         List<Object[]> towns = townNames.stream().map( name -> new String[] {name} ).collect(Collectors.toList());
 
-        towns.forEach(pueblo -> log.info(String.format("Inserting town '%s'", pueblo[0])));
+        towns.forEach(pueblo -> this.log.info(String.format("Inserting town '%s'", pueblo[0])));
 
-        db.batchUpdate("INSERT INTO towns(name) VALUES (?)", towns);
+        this.db.batchUpdate("INSERT INTO towns(name) VALUES (?)", towns);
 
         return townNames;
     }

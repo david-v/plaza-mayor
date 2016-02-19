@@ -24,11 +24,13 @@ public class FakeDataController
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity createFakeTownsData() throws Exception
     {
+        FakeDataService.injectDependencies(jdbcTemplate);
+
         if (counter.incrementAndGet() > 1) {
             return ResponseEntity.status(400).body(Utils.errorStringToJson("Test data already created"));
         }
 
-        List<String> townNames = FakeDataService.createFakeTownsData(jdbcTemplate);
+        List<String> townNames = FakeDataService.getInstance().createFakeTownsData();
         
         return ResponseEntity.ok().body(townNames);
     }
