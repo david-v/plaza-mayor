@@ -2,10 +2,10 @@
 
 Web service and personal project intended to:
 
-a. Learn Java, and its tech stack which is new to me.
-b. Have fun.
-c. Perhaps build something I can then use as a web service for an Android app...
-d. Get motivation to [next step] learn Android!
+1. Learn Java, and its tech stack which is new to me.
+2. Have fun.
+3. Perhaps build something I can then use as a web service for an Android app...
+4. Get motivation to [next step] learn Android!
 
 ---
 
