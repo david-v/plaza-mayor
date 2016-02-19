@@ -20,9 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("/towns")
 public class TownController 
 {
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     @RequestMapping(method = RequestMethod.GET, value = "/{townId}", produces = "application/json")
     public ResponseEntity getTown(@PathVariable("townId") String townId)
     {
+        DatabaseSingleton.getInstance().setDB(jdbcTemplate);
+
         try {
             List<Town> towns = TownService.getTown(townId);
             return ResponseEntity.ok().body(towns);

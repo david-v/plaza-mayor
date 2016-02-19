@@ -5,26 +5,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class DatabaseSingleton 
 {
-   private static DatabaseSingleton instance = null;
+    private static DatabaseSingleton instance = null;
 
-   @Autowired
-   protected JdbcTemplate jdbcTemplate;
+    protected JdbcTemplate jdbcTemplate;
 
-   protected DatabaseSingleton()
-   {
-      // Singleton
-   }
-   
-   public static DatabaseSingleton getInstance()
-   {
-      if (instance == null) {
-         instance = new DatabaseSingleton();
-      }
-      return instance;
-   }
+    protected DatabaseSingleton()
+    {
+        // Singleton
+    }
 
-   public JdbcTemplate getDB()
-   {
-      return this.jdbcTemplate;
-   }
+    public static DatabaseSingleton getInstance()
+    {
+        if (instance == null) {
+            instance = new DatabaseSingleton();
+        }
+        return instance;
+    }
+
+    public JdbcTemplate getDB()
+    {
+        return this.jdbcTemplate;
+    }
+
+    public void setDB(JdbcTemplate jdbcTemplate)
+    {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 }

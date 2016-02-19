@@ -16,11 +16,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("/fake-data")
 public class FakeDataController 
 {
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity createFakeTownsData() throws Exception
     {
+        DatabaseSingleton.getInstance().setDB(jdbcTemplate);
+
         if (counter.incrementAndGet() > 1) {
             return ResponseEntity.status(400).body(Utils.errorStringToJson("Test data already created"));
         }
