@@ -1,4 +1,4 @@
-package plazamayor;
+package plazamayor.controller;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +11,9 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import plazamayor.DatabaseSingleton;
+import plazamayor.Utils;
+import plazamayor.service.FakeDataService;
 
 @RestController
 @RequestMapping("/fake-data")

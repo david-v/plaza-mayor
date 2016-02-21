@@ -1,10 +1,14 @@
-package plazamayor;
+package plazamayor.service;
 
 import org.slf4j.Logger;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import plazamayor.Application;
+import plazamayor.DatabaseSingleton;
+import plazamayor.model.Town;
+import plazamayor.Utils;
+import plazamayor.exception.TownNameTooShortException;
 
 public class TownService
 {

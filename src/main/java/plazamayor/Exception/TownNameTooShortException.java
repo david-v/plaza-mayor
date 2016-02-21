@@ -1,6 +1,6 @@
-package plazamayor;
+package plazamayor.exception;
 
-class TownNameTooShortException extends BaseException
+public class TownNameTooShortException extends BaseException
 {
 	static {
 		statusCode = 400;

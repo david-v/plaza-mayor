@@ -1,4 +1,4 @@
-package plazamayor;
+package plazamayor.model;
 
 public class Town 
 {

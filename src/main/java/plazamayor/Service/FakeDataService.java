@@ -1,4 +1,4 @@
-package plazamayor;
+package plazamayor.service;
 
 import org.slf4j.Logger;
 import java.util.Arrays;
@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import plazamayor.Application;
+import plazamayor.DatabaseSingleton;
 
 public class FakeDataService
 {

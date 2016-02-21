@@ -1,4 +1,4 @@
-package plazamayor;
+package plazamayor.controller;
 
 import org.slf4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +15,11 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import plazamayor.DatabaseSingleton;
+import plazamayor.model.Town;
+import plazamayor.Utils;
+import plazamayor.exception.BaseException;
+import plazamayor.service.TownService;
 
 @RestController
 @RequestMapping("/towns")

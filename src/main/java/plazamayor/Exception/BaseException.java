@@ -1,8 +1,9 @@
-package plazamayor;
+package plazamayor.exception;
 
+import plazamayor.Application;
 import java.lang.Exception;
 
-class BaseException extends Exception
+public class BaseException extends Exception
 {
 	protected static int statusCode = 500;
 
