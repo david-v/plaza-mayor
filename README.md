@@ -36,3 +36,11 @@ Well this is nice, much easier than I thought to get a couple of routes working 
 For now I've managed to move the DB connection to a Singleton. With 'spring' handling the Front Controller, the start point to my requests is the Controller actions themselves, so I had to use the "magic" of [ @Autowired JdbcTemplate jdbcTemplate; ] which I hate. 
 
 I just don't like annotations at this point, coming from PHP where I know what my app does from the first line of index.php to the very end of a request, there's too much XML and hidden configuration that Spring handles for you. I want to avoid it when possible (for now).
+
+*20 Feb*
+
+Okay I got the basics now, time to start using an IDE! I installed the popular Eclipse, and the project wouldn't even build as Maven, it seems like Gradle is smarter from the command line: my packages were all wrong and still run, that's how smart it is. No longer the case when trying to run Maven from Eclipse. I got the dependencies all sorted and finally it's up and running again. Debugger listening. I do not entirely like Eclipse though, it feels... old. PHPStorm is much nicer
+
+*21 Feb*
+
+I got rid of Eclipse, I couldn't stand its white blackground colour. I've installed Intellij (from JetBrains like PHPStorm and Webstorm, which I've used A LOT) and it feels so much natural, as they share interface and keyboard shortcuts. NOW I feel that I could properly start coding in Java.
