@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS plazamayor;
+GRANT ALL PRIVILEGES ON plazamayor.* TO pc@localhost IDENTIFIED BY 'pc';
+
+USE plazamayor;
+
+CREATE TABLE IF NOT EXISTS towns (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  lat FLOAT,
+  lon FLOAT,
+  INDEX (name)
+) engine=InnoDB;
