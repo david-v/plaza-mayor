@@ -11,9 +11,9 @@ Web service and personal project intended to:
 
 **Tech Stack**
 
-	Java      - coffee, yay! :D
-	Spring    - for now using it just for Routing
-	Hibernate - for now not using it at all!
+	Java
+	Spring
+	Hibernate
 
 **Usage**
 
