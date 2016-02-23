@@ -50,4 +50,4 @@ I got rid of Eclipse, I couldn't stand its white blackground colour. I've instal
 
 *22 Feb*
 
-Python script to scrape Wikipedia for data about all towns and regions in spain. Connect it to MySQL, compared data with the official source from INE (Instituto Nacional de Estadistica) website.
+Python script to scrape Wikipedia for data about all towns and regions in Spain. Connect it to MySQL, compared data with the official source from INE (Instituto Nacional de Estadistica) website.
