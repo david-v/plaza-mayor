@@ -47,3 +47,7 @@ Okay I got the basics now, time to start using an IDE! I installed the popular E
 *21 Feb*
 
 I got rid of Eclipse, I couldn't stand its white blackground colour. I've installed Intellij (from JetBrains like PHPStorm and Webstorm, which I've used A LOT) and it feels so much natural, as they share interface and keyboard shortcuts. NOW I feel that I could properly start coding in Java. I've moved the entire project to a more Spring-y way of doing it, following the PetClinic guide from Spring.
+
+*22 Feb*
+
+Python script to scrape Wikipedia for data about all towns and regions in spain. Connect it to MySQL, compared data with the official source from INE (Instituto Nacional de Estadistica) website.
