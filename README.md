@@ -11,9 +11,11 @@ Web service and personal project intended to:
 
 **Tech Stack**
 
-	Java
+	Java 7
 	Spring
 	Hibernate
+	Python
+	MySQL
 
 **Usage**
 
