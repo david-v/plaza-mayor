@@ -25,8 +25,8 @@ public class JpaTownRepositoryImpl implements TownRepository {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
     public Town findById(int id) {
         return this.em.find(Town.class, id);
     }
