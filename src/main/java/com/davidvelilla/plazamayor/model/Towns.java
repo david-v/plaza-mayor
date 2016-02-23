@@ -15,23 +15,22 @@
  */
 package com.davidvelilla.plazamayor.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement
 public class Towns {
 
-    private List<Town> vets;
+    private List<Town> towns;
 
     @XmlElement
     public List<Town> getTownList() {
-        if (vets == null) {
-            vets = new ArrayList<>();
+        if (towns == null) {
+            towns = new ArrayList<>();
         }
-        return vets;
+        return towns;
     }
 
 }
