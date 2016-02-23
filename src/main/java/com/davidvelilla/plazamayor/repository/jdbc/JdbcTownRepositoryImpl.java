@@ -2,7 +2,6 @@ package com.davidvelilla.plazamayor.repository.jdbc;
 
 import com.davidvelilla.plazamayor.model.Region;
 import com.davidvelilla.plazamayor.model.Town;
-import com.davidvelilla.plazamayor.repository.RegionRepository;
 import com.davidvelilla.plazamayor.repository.TownRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -21,18 +20,15 @@ public class JdbcTownRepositoryImpl implements TownRepository
 {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private SimpleJdbcInsert insertTown;
-    private RegionRepository regionRepository;
 
     @Autowired
-    public JdbcTownRepositoryImpl(DataSource dataSource, RegionRepository regionRepository)
+    public JdbcTownRepositoryImpl(DataSource dataSource)
     {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 
         this.insertTown = new SimpleJdbcInsert(dataSource)
             .withTableName("towns")
             .usingGeneratedKeyColumns("id");
-
-        this.regionRepository = regionRepository;
     }
 
     public Collection<Town> findByName(String name) throws DataAccessException
@@ -98,11 +94,16 @@ public class JdbcTownRepositoryImpl implements TownRepository
             .addValue("region_id", town.getRegion().getId());
     }
 
-    private Town injectRegion(JdbcTown town)
+    private void injectRegion(JdbcTown town) throws DataAccessException
     {
-        int regionId = town.getRegionId();
-        Region region = this.regionRepository.findById(regionId);
+        // Retrieve the list of all towns matching the name
+        Map<String, Object> params = new HashMap<>();
+        params.put("region_id", town.getRegionId());
+        Region region = this.namedParameterJdbcTemplate.queryForObject(
+            "SELECT * FROM regions WHERE id=:region_id",
+            params,
+            new JdbcRegionRowMapper()
+        );
         town.setRegion(region);
-        return town;
     }
 }

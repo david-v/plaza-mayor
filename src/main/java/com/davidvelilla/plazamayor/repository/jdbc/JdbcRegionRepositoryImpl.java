@@ -1,5 +1,6 @@
 package com.davidvelilla.plazamayor.repository.jdbc;
 
+import com.davidvelilla.plazamayor.model.Town;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -26,15 +27,36 @@ public class JdbcRegionRepositoryImpl implements RegionRepository
     @Override
     public Region findById(int id) throws DataAccessException
     {
+        Region region;
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("id", id);
-            return this.namedParameterJdbcTemplate.queryForObject(
+            region = this.namedParameterJdbcTemplate.queryForObject(
                 "SELECT * FROM regions WHERE id=:id",
                 params,
                 new JdbcRegionRowMapper());
         } catch (EmptyResultDataAccessException ex) {
             throw new ObjectRetrievalFailureException(Region.class, id);
         }
+        injectTowns(region);
+        return region;
+    }
+
+    public void injectTowns(Region region) throws DataAccessException
+    {
+        // Retrieve the list of all towns matching the name
+        Map<String, Object> params = new HashMap<>();
+        params.put("region_id", region.getId());
+        Collection<JdbcTown> results = this.namedParameterJdbcTemplate.query(
+            "SELECT * FROM towns WHERE region_id=:region_id",
+            params,
+            new JdbcTownRowMapper()
+        );
+        Set<Town> towns = new HashSet<>();
+        for (JdbcTown result : results) {
+            result.setRegion(region);
+            towns.add(result);
+        }
+        region.setTowns(towns);
     }
 }
