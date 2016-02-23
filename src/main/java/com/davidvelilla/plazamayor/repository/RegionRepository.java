@@ -1,10 +1,7 @@
 package com.davidvelilla.plazamayor.repository;
 
-import java.util.Collection;
-
 import com.davidvelilla.plazamayor.model.Region;
 import org.springframework.dao.DataAccessException;
-import com.davidvelilla.plazamayor.model.BaseEntity;
 
 public interface RegionRepository
 {

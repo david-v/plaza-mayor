@@ -35,6 +35,7 @@
     <oxm:jaxb2-marshaller id="marshaller">
         <!-- Object-XML mapping declared using annotations inside 'Towns' -->
         <oxm:class-to-be-bound name="com.davidvelilla.plazamayor.model.Towns"/>
+        <oxm:class-to-be-bound name="com.davidvelilla.plazamayor.model.Regions"/>
     </oxm:jaxb2-marshaller>
 
 </beans>

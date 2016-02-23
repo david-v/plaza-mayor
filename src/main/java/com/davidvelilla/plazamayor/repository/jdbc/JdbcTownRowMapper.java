@@ -1,10 +1,9 @@
 package com.davidvelilla.plazamayor.repository.jdbc;
 
+import org.springframework.jdbc.core.RowMapper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.davidvelilla.plazamayor.repository.jdbc.JdbcTown;
-import org.springframework.jdbc.core.RowMapper;
 
 class JdbcTownRowMapper implements RowMapper<JdbcTown> {
 

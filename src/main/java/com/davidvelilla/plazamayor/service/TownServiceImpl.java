@@ -1,19 +1,18 @@
 package com.davidvelilla.plazamayor.service;
 
-import java.util.Collection;
-
+import com.davidvelilla.plazamayor.exception.TownNameTooShortException;
+import com.davidvelilla.plazamayor.model.Town;
+import com.davidvelilla.plazamayor.repository.TownRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.davidvelilla.plazamayor.model.Town;
-import com.davidvelilla.plazamayor.repository.TownRepository;
-import com.davidvelilla.plazamayor.exception.TownNameTooShortException;
+
+import java.util.Collection;
 
 @Service
 public class TownServiceImpl implements TownService
 {
-
     private TownRepository townRepository;
 
     @Autowired
