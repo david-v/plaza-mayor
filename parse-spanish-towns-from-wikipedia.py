@@ -1,8 +1,42 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
 from lxml import html
 import requests
+import mysql.connector
+
+try:
+	dbCon = mysql.connector.connect(user='root', password='', host='127.0.0.1', database='plazamayor')
+	dbCur = dbCon.cursor()
+except mysql.connector.Error as err:
+	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+		print("Something is wrong with your user name or password")
+	elif err.errno == errorcode.ER_BAD_DB_ERROR:
+		print("Database does not exist")
+	else:
+		print(err)
+	sys.exit()
+
+
+dbCur.execute("DROP TABLE IF EXISTS towns")
+dbCur.execute("DROP TABLE IF EXISTS regions")
+
+dbCur.execute("CREATE TABLE IF NOT EXISTS towns (" +
+			"  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+			"  region_id INT(4) UNSIGNED NOT NULL," +
+			"  name VARCHAR(50) NOT NULL UNIQUE," +
+			"  wikiUrl VARCHAR(100),"
+			"  lat FLOAT," +
+			"  lon FLOAT," +
+			"  INDEX (name)" +
+			") engine=InnoDB;")
+dbCur.execute("CREATE TABLE IF NOT EXISTS regions (" +
+			"  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+			"  name VARCHAR(50) NOT NULL UNIQUE," +
+			"  INDEX (name)" +
+			") engine=InnoDB;")
+
 
 baseWikipediaUrl = 'https://es.wikipedia.org'
 page = requests.get(baseWikipediaUrl + '/wiki/Anexo:Municipios_de_España')
@@ -62,25 +96,43 @@ for ele in elements:
 
 	townCount = 0
 	for subele in subelements:
-		subtext = subele.text
-		if subtext is None:
+		townName = subele.text
+		if townName is None:
 			continue # the elements we're looking for all have text defined
 		subhref = subele.get('href')
 		if (subhref is None):
 			print "CRITICAL!"
 			break
-		# print  ' - ' + subtext + ' - ' + subhref
+		# print  ' - ' + townName + ' - ' + subhref
 		
-		town = {'region': regionName, 'name': subtext, 'href': subhref}
-		towns.append(town)
-
 		try:
 			regions[regionCount]
 		except IndexError:
 			regions.append( {'name': regionName, 'count': 0} )
 
-		regions[regionCount]['count'] = regions[regionCount]['count'] + 1
-		
+			regionInDB = False
+			dbCur.execute("SELECT id FROM regions WHERE name LIKE '" + regionName + "'")
+			for (id) in dbCur:
+				regionInDB = True
+				regionId = id
+
+			if not regionInDB:
+				dbCur.execute("INSERT INTO regions (name) VALUES ('" + regionName + "')")
+				regionId = dbCur.lastrowid
+
+		townInDB = False
+		dbCur.execute("SELECT id FROM towns WHERE name LIKE '" + townName + "'")
+		for (id) in dbCur:
+			townInDB = True
+			regionId = id
+
+		if not townInDB:
+			query = "INSERT INTO towns (name, region_id, wikiUrl) VALUES ('" + townName + "', " + str(regionId) + ", '" + subhref + "')"
+			print query
+			dbCur.execute(query)
+			regionId = dbCur.lastrowid
+
+		regions[regionCount]['count'] = regions[regionCount]['count'] + 1		
 		townCount = townCount + 1
 		totalTowns = totalTowns + 1
 
@@ -88,6 +140,11 @@ for ele in elements:
 
 for region in regions:
 	print region['name'] + ': ' + str(region['count'])
+
+dbCon.commit()
+
+dbCur.close()
+dbCon.close()
 
 print '------------------------------'
 print 'TOTAL REGIONS: ' + str(regionCount)
