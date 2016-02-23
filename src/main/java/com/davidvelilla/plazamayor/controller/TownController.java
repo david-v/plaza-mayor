@@ -36,7 +36,7 @@ public class TownController
         } catch (NumberFormatException e) {
             // not an integer!
             try {
-                Collection<Town> results = this.townService.findTownsByName("%" + town + "%");
+                Collection<Town> results = this.townService.findTownsByName(town);
                 towns.getTownList().addAll(results);
             } catch (BaseException be) {
                 return ResponseEntity.status(be.getStatusCode()).body(be.getJsonMessage());
