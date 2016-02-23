@@ -50,7 +50,9 @@ I got rid of Eclipse, I couldn't stand its white blackground colour. I've instal
 
 *22 Feb*
 
-Okay now that my IDE is sorted, I feel that I can start properly coding at last! I've written a **Python script to scrape Wikipedia** for data about all towns and regions in Spain. Connect it to MySQL, compared data with the official source from INE (Instituto Nacional de Estadistica) website.
+Okay now that my IDE is sorted, I feel that I can start properly coding at last!
+
+I've written a **Python script to scrape Wikipedia** for data about all towns and regions in Spain, and dump it to MySQL. I compared the data obtained with the official source from INE (Instituto Nacional de Estadistica) website and it's all good!
 
 *23 Feb*
 
