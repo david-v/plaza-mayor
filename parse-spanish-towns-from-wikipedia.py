@@ -44,7 +44,6 @@ tree = html.fromstring(page.content)
 elements = tree.xpath('//*[@id="mw-content-text"]/ul/li/a')
 
 regions = []
-towns = []
 
 regionCount = 0
 totalTowns = 0
@@ -117,20 +116,20 @@ for ele in elements:
 				regionId = id
 
 			if not regionInDB:
-				dbCur.execute("INSERT INTO regions (name) VALUES ('" + regionName + "')")
+				dbCur.execute('INSERT INTO regions (name) VALUES ("' + regionName + '")')
 				regionId = dbCur.lastrowid
 
+		escapedTownName = townName.replace("'", "''")
 		townInDB = False
-		dbCur.execute("SELECT id FROM towns WHERE name LIKE '" + townName + "'")
+		dbCur.execute("SELECT id FROM towns WHERE name LIKE '" + escapedTownName + "'")
 		for (id) in dbCur:
 			townInDB = True
 			regionId = id
 
 		if not townInDB:
-			query = "INSERT INTO towns (name, region_id, wikiUrl) VALUES ('" + townName + "', " + str(regionId) + ", '" + subhref + "')"
+			query = 'INSERT INTO towns (name, region_id, wikiUrl) VALUES ("' + escapedTownName + '", ' + str(regionId) + ', "' + subhref + '")'
 			print query
 			dbCur.execute(query)
-			regionId = dbCur.lastrowid
 
 		regions[regionCount]['count'] = regions[regionCount]['count'] + 1		
 		townCount = townCount + 1
