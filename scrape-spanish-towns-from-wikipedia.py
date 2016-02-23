@@ -25,7 +25,7 @@ dbCur.execute("DROP TABLE IF EXISTS regions")
 dbCur.execute("CREATE TABLE IF NOT EXISTS towns (" +
 			"  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY," +
 			"  region_id INT(4) UNSIGNED NOT NULL," +
-			"  name VARCHAR(50) NOT NULL UNIQUE," +
+			"  name VARCHAR(50) NOT NULL," +
 			"  wikiUrl VARCHAR(100),"
 			"  lat FLOAT," +
 			"  lon FLOAT," +
@@ -107,8 +107,6 @@ for ele in elements:
 		try:
 			regions[regionCount]
 		except IndexError:
-			regions.append( {'name': regionName, 'count': 0} )
-
 			regionInDB = False
 			dbCur.execute("SELECT id FROM regions WHERE name LIKE '" + regionName + "'")
 			for (id) in dbCur:
@@ -116,18 +114,21 @@ for ele in elements:
 				regionId = id
 
 			if not regionInDB:
-				dbCur.execute('INSERT INTO regions (name) VALUES ("' + regionName + '")')
+				dbCur.execute("INSERT INTO regions (name) VALUES ('" + regionName + "')")
 				regionId = dbCur.lastrowid
+				print str(regionId)
+			regions.append( {'regionId': regionId, 'name': regionName, 'count': 0} )
 
 		escapedTownName = townName.replace("'", "''")
 		townInDB = False
-		dbCur.execute("SELECT id FROM towns WHERE name LIKE '" + escapedTownName + "'")
+		dbCur.execute("SELECT id FROM towns WHERE name LIKE '" + escapedTownName + "' AND region_id = " + str(regionId))
 		for (id) in dbCur:
 			townInDB = True
-			regionId = id
+			townId = id
+			print "TOWN ID: " + str(townId)
 
 		if not townInDB:
-			query = 'INSERT INTO towns (name, region_id, wikiUrl) VALUES ("' + escapedTownName + '", ' + str(regionId) + ', "' + subhref + '")'
+			query = "INSERT INTO towns (name, region_id, wikiUrl) VALUES ('" + escapedTownName + "', " + str(regionId) + ", '" + subhref + "')"
 			print query
 			dbCur.execute(query)
 
