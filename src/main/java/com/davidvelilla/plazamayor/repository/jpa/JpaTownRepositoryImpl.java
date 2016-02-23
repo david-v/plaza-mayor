@@ -34,8 +34,8 @@ public class JpaTownRepositoryImpl implements TownRepository {
     @Override
     @SuppressWarnings("unchecked")
     public List<Town> findByName(String name) {
-        return this.em.createQuery("SELECT * FROM towns WHERE name LIKE :name ORDER BY name")
-            .setParameter("name", "%" + name + "%")
+        return this.em.createQuery("SELECT town FROM Town town WHERE name LIKE :name ORDER BY name")
+            .setParameter("name", name)
             .getResultList();
     }
 }

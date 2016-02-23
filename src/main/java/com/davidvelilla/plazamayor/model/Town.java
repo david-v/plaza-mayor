@@ -3,6 +3,8 @@ package com.davidvelilla.plazamayor.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = "towns")
@@ -17,7 +19,8 @@ public class Town extends NamedEntity
     @Column(name = "wiki_url")
     private String wikiUrl;
 
-    @Column(name = "region")
+    @ManyToOne
+    @JoinColumn(name = "region_id")
     private Region region;
 
     public Float getLat() {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.davidvelilla.plazamayor.model.Towns;
 import com.davidvelilla.plazamayor.service.TownService;
 import com.davidvelilla.plazamayor.exception.BaseException;
@@ -25,7 +26,7 @@ public class TownController
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{town}", produces = "application/json")
-    public ResponseEntity findTown(@PathVariable("town") String town)
+    public @ResponseBody ResponseEntity findTown(@PathVariable("town") String town)
     {
         Towns towns = new Towns();
 
