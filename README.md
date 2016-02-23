@@ -56,4 +56,4 @@ Python script to scrape Wikipedia for data about all towns and regions in Spain.
 
 All 3 adapters for the model repositories up and running. Hibernate is actually pretty nice, comparing the code written for 'SpringDataJpa', 'Jpa' and 'Jdbc' I can see why someone would want to use it. It feels sooo much like Doctrine.
 
-Also, just noticed that my town *Segura de los Baños* happened to be n. 6666 of all towns in Spain scraped with my Python script. HOW COOL IS THAT.
+Also, just noticed that my town **Segura de los Baños** happened to be id. **6666** of all towns in Spain scraped with my Python script. HOW COOL IS THAT.
