@@ -17,8 +17,8 @@ public class Town extends NamedEntity
     @Column(name = "wiki_url")
     private String wikiUrl;
 
-    @Column(name = "region_id")
-    private Integer regionId;
+    @Column(name = "region")
+    private Region region;
 
     public Float getLat() {
         return this.lat;
@@ -44,11 +44,11 @@ public class Town extends NamedEntity
         this.wikiUrl = wikiUrl;
     }
 
-    public Integer getRegionId() {
-        return regionId;
+    public Region getRegion() {
+        return region;
     }
 
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }

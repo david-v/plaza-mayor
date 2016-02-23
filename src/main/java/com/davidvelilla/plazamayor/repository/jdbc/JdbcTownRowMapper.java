@@ -3,14 +3,14 @@ package com.davidvelilla.plazamayor.repository.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.davidvelilla.plazamayor.model.Town;
+import com.davidvelilla.plazamayor.repository.jdbc.JdbcTown;
 import org.springframework.jdbc.core.RowMapper;
 
-class JdbcTownRowMapper implements RowMapper<Town> {
+class JdbcTownRowMapper implements RowMapper<JdbcTown> {
 
     @Override
-    public Town mapRow(ResultSet rs, int rownum) throws SQLException {
-        Town town = new Town();
+    public JdbcTown mapRow(ResultSet rs, int rownum) throws SQLException {
+        JdbcTown town = new JdbcTown();
         town.setId(rs.getInt("towns.id"));
         town.setName(rs.getString("name"));
         town.setLat(rs.getFloat("lat"));

@@ -8,7 +8,6 @@ import com.davidvelilla.plazamayor.model.BaseEntity;
 
 public interface TownRepository
 {
-
     /**
      * Retrieve <code>Town</code>s from the data store by name, returning all that match
      *
@@ -34,6 +33,4 @@ public interface TownRepository
      * @see BaseEntity#isNew
      */
     void save(Town town) throws DataAccessException;
-
-
 }
