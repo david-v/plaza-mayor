@@ -79,6 +79,8 @@ public class JdbcTownRepositoryImpl implements TownRepository
             .addValue("id", town.getId())
             .addValue("name", town.getName())
             .addValue("lat", town.getLat())
-            .addValue("lon", town.getLon());
+            .addValue("lon", town.getLon())
+            .addValue("wiki_url", town.getWikiUrl())
+            .addValue("region_id", town.getRegionId());
     }
 }

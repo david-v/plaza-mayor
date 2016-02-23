@@ -9,28 +9,46 @@ import javax.persistence.Table;
 public class Town extends NamedEntity
 {
     @Column(name = "lat")
-    private float lat;
+    private Float lat;
 
     @Column(name = "lon")
-    private float lon;
+    private Float lon;
 
-    public float getLat()
-    {
+    @Column(name = "wiki_url")
+    private String wikiUrl;
+
+    @Column(name = "region_id")
+    private Integer regionId;
+
+    public Float getLat() {
         return this.lat;
     }
 
-    public void setLat(float lat)
-    {
+    public void setLat(Float lat) {
         this.lat = lat;
     }
 
-    public float getLon()
-    {
+    public Float getLon() {
         return this.lon;
     }
 
-    public void setLon(float lon)
-    {
+    public void setLon(Float lon) {
         this.lon = lon;
+    }
+
+    public String getWikiUrl() {
+        return wikiUrl;
+    }
+
+    public void setWikiUrl(String wikiUrl) {
+        this.wikiUrl = wikiUrl;
+    }
+
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 }

@@ -15,6 +15,8 @@ class JdbcTownRowMapper implements RowMapper<Town> {
         town.setName(rs.getString("name"));
         town.setLat(rs.getFloat("lat"));
         town.setLon(rs.getFloat("lon"));
+        town.setWikiUrl(rs.getString("wiki_url"));
+        town.setRegionId(rs.getInt("region_id"));
         return town;
     }
 }

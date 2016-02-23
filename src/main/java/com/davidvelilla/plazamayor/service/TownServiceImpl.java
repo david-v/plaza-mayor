@@ -26,7 +26,7 @@ public class TownServiceImpl implements TownService
     @Transactional(readOnly = true)
     public Collection<Town> findTownsByName(String name) throws DataAccessException, TownNameTooShortException
     {
-        if (name.length() < 3) {
+        if (name.length() < 5) {
             throw new TownNameTooShortException("Town name too short");
         }
         return townRepository.findByName(name);
