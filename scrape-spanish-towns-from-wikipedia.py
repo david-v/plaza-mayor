@@ -26,7 +26,7 @@ dbCur.execute("CREATE TABLE IF NOT EXISTS towns (" +
 			"  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY," +
 			"  region_id INT(4) UNSIGNED NOT NULL," +
 			"  name VARCHAR(50) NOT NULL," +
-			"  wikiUrl VARCHAR(100),"
+			"  wiki_url VARCHAR(100),"
 			"  lat FLOAT," +
 			"  lon FLOAT," +
 			"  INDEX (name)" +
@@ -128,7 +128,7 @@ for ele in elements:
 			print "TOWN ID: " + str(townId)
 
 		if not townInDB:
-			query = "INSERT INTO towns (name, region_id, wikiUrl) VALUES ('" + escapedTownName + "', " + str(regionId) + ", '" + subhref + "')"
+			query = "INSERT INTO towns (name, region_id, wiki_url) VALUES ('" + escapedTownName + "', " + str(regionId) + ", '" + subhref + "')"
 			print query
 			dbCur.execute(query)
 
