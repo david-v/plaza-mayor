@@ -82,7 +82,7 @@ public class JdbcTownRepositoryImpl implements TownRepository
             town.setId(newKey.intValue());
         } else {
             this.namedParameterJdbcTemplate.update(
-                "UPDATE towns SET name=:name, lat=:lat, lon=:lon WHERE id=:id",
+                "UPDATE towns SET name=:name, lat=:lat, lon=:lon, wiki_url=:wiki_url, region_id=:region_id WHERE id=:id",
                 createTownParameterSource(town));
         }
     }
