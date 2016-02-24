@@ -375,6 +375,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${appengine.target.version}</version>
+                <configuration>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <reporting>
