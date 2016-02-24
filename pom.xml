@@ -43,6 +43,9 @@
 
         <cobertura.version>2.7</cobertura.version>
 
+        <appengine.app.version>1</appengine.app.version>
+        <appengine.target.version>1.9.30</appengine.target.version>
+
     </properties>
 
     <dependencyManagement>
