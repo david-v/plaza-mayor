@@ -20,7 +20,6 @@
          <param-value>jdbc</param-value>
     </context-param>
 
-    <!--  the  CallMonitoringAspect counts invocations on classes with @Repository on them. Classes in spring-data-jpa don't have that annotation  -->
     <!--  When using Spring Data JPA, uncomment the following: -->
 
     <!--<context-param>-->
@@ -34,7 +33,7 @@
 	-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/business-config.xml, classpath:spring/tools-config.xml</param-value>
+        <param-value>classpath:spring/business-config.xml</param-value>
     </context-param>
 
     <listener>
