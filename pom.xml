@@ -262,6 +262,7 @@
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
     <build>
         <defaultGoal>install</defaultGoal>
+        <outputDirectory>target/${project.artifactId}/WEB-INF/classes</outputDirectory>
         <testResources>
             <testResource>
                 <!-- declared explicitly so Spring config files can be placed next to their corresponding JUnit test class  -->
