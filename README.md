@@ -61,3 +61,9 @@ I've written a **Python script to scrape Wikipedia** for data about all towns an
 All 3 adapters ['Jdbc', 'Jpa', 'SpringDataJpa'] up and running. I started with Jdbc, doing it the hard way to learn. Just the way I like. Then moved onto Hibernate, which is actually pretty nice. It feels sooo much like Doctrine. With Intellij I can just Alt+Spacebar and see what Annotations do anyways, so it doesn't seem "black magic" anymore.
 
 Also, just noticed that my town **Segura de los Baños** happened to be id. **6666** of all towns in Spain scraped with my Python script. HOW COOL IS THAT.
+
+*24 Feb*
+
+Google App Engine running! I've deployed the app to: [https://plaza-mayor.appspot.com/towns/Segura](https://plaza-mayor.appspot.com/towns/Segura) You see how Segura de Baños is 6666? :D
+
+It was quite difficult to make this run. A lot harder than Google's 5 min tutorial to deploy a Hello World Servlet with no framework. I had to downgrade to JDK 7. Then use Jetty instead of Tomcat, so I had to learn it too, that and configure Intellij. It also required changes in the codebase: cache, logging system. But probably the worst was a [BUG](https://jira.spring.io/browse/SPR-13829) in my version of Spring: 4.2.4 has a BUG that makes GAE not run. I had to downgrade to 4.1.3 for it to run. It's pretty nice that Google's implementation of a SQL database is MySQL (could have been anything else!) so it still works with the JDBC Dialects that I had configured, at least I didn't have to change that...
