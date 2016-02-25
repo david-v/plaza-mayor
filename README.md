@@ -11,18 +11,33 @@ Web service and personal project intended to:
 
 **Tech Stack**
 
+[On Feb 16th I had never touched any of the following]
+
 	Java 7
 	Spring
 	Hibernate
 	Python
 	MySQL
 
+	Tomcat
+	Jetty
+
+	Google App Engine
+	Google Cloud SQL
+
 **Usage**
 
-	[ ./gradlew bootRun ] NO LONGER VALID - I'm using only Maven now, I'll add Gradle support at some point again
+[ ./gradlew bootRun ] NO LONGER VALID - I'm using only Maven now, I'll add Gradle support at some point again
 	
-	mvn compile
-	mvn tomcat7:run
+	mvn clean install
+
+AND THEN
+
+    mvn tomcat7:run
+
+        OR
+
+    mvn jetty:run
 
 ---
 
