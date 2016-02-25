@@ -27,7 +27,7 @@ Web service and personal project intended to:
 
 **Usage**
 
-[ ./gradlew bootRun ] NO LONGER VALID - I'm using only Maven now, I'll add Gradle support at some point again
+[ ./gradlew bootRun ] NO LONGER SUPPORTED - I'm using only Maven now, I'll add Gradle back at some point
 	
 	mvn clean install
 
