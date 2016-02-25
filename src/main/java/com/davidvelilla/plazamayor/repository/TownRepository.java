@@ -1,10 +1,10 @@
 package com.davidvelilla.plazamayor.repository;
 
-import java.util.Collection;
-
+import com.davidvelilla.plazamayor.model.BaseEntity;
 import com.davidvelilla.plazamayor.model.Town;
 import org.springframework.dao.DataAccessException;
-import com.davidvelilla.plazamayor.model.BaseEntity;
+
+import java.util.Collection;
 
 public interface TownRepository
 {
@@ -24,7 +24,6 @@ public interface TownRepository
      * @throws org.springframework.dao.DataRetrievalFailureException if not found
      */
     Town findById(int id) throws DataAccessException;
-
 
     /**
      * Save an <code>Town</code> to the data store, either inserting or updating it.
