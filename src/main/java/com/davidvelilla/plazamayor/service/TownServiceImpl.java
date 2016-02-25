@@ -8,7 +8,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class TownServiceImpl implements TownService
@@ -28,7 +30,28 @@ public class TownServiceImpl implements TownService
         if (name.length() < 3) {
             throw new TownNameTooShortException("Town name too short");
         }
-        return townRepository.findByName("%" + name + "%");
+        String joined;
+        if (name.contains(" ")) {
+            List<String> ignoredWords = Arrays.asList("de", "el", "del", "la", "los", "las");
+
+            String[] split = name.split(" ");
+            StringBuilder sb = new StringBuilder();
+            sb.append("%");
+            for (String word : split) {
+                if (ignoredWords.contains(word)) {
+                    continue;
+                }
+                sb.append(word);
+                sb.append("%");
+            }
+            joined = sb.toString();
+        } else {
+            joined = "%" + name + "%";
+        }
+        if (joined.length() < 3) {
+            throw new TownNameTooShortException("Town name too short");
+        }
+        return townRepository.findByName(joined);
     }
 
     @Override
