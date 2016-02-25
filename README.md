@@ -49,7 +49,7 @@ Time to try out some **Java** development. I love the **strongly typed** nature 
 
 *18 Feb*
 
-Well this is nice, much easier than I thought to get a couple of routes working in the same time that I would get a few endpoints for a web service up and running with any PHP framework. Spring's syntax is so similar to Symfony, with annotations and everything (not a fan of this tho). For what I've read, Hibernate will be easy pissy, knowing Doctrine.
+Well this is nice, much easier than I thought to get a couple of routes working. It took me about the same time than with any PHP framework. Spring's syntax is so similar to Symfony, with annotations and everything (not a fan of this though). For what I've read, Hibernate will be easy pissy, knowing Doctrine.
 
 *19 Feb*
 
