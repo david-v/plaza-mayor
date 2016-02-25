@@ -3,15 +3,18 @@
 Web service and personal project intended to:
 
 1. Learn Java, and its tech stack which is new to me.
-2. Have fun.
-3. Perhaps build something I can then use as a web service for an Android app...
-4. Get motivation to [next step] learn Android!
+2. Learn a bit of Python
+3. Learn Google Cloud services as infrastructure provider as opposed to AWS
+4. Have fun.
+5. Perhaps build something I can then use as a web service for an Android app / Angular.js front
+6. Get motivated to [next step] learn Android
+7. Get motivated to [next-next step] learn Angular!
 
 ---
 
 **Tech Stack**
 
-[On Feb 16th I had never touched any of the following]
+[As per Feb 16th 2016 I had never touched any of the following (except for MySQL)]
 
 	Java 7
 	Spring
