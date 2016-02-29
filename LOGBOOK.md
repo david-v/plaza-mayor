@@ -4,9 +4,13 @@
 
 Time to try out some **Java** development. I love the **strongly typed** nature of if. It seems the right way to go, after having to deal with bugs in PHP which were very difficult to find due to their edge case nature, which ended up being critical. In the end my PHP code was checking for the value of every single param passed to functions... Java seems so much cleaner, enforcing you to do it right, and finding some of these errors in compile-time.
 
+---
+
 *18 Feb*
 
 Well this is nice, much easier than I thought to get a couple of routes working. It took me about the same time than with any PHP framework. Spring's syntax is so similar to Symfony, with annotations and everything (not a fan of this though). For what I've read, Hibernate will be easy pissy, knowing Doctrine.
+
+---
 
 *19 Feb*
 
@@ -14,13 +18,19 @@ For now I've managed to move the DB connection to a Singleton. With Spring handl
 
 I just don't like annotations at this point, coming from PHP where I know what my app does from the first line of index.php to the very end of a request, there's too much XML and hidden configuration that Spring handles for you. I want to avoid it when possible (for now).
 
+---
+
 *20 Feb*
 
 Okay I got the basics now, time to start using an IDE! I installed the popular Eclipse, and the project wouldn't even build with Maven. It seems like Gradle is smarter from the command line: my packages were all wrong and still run, that's how smart it is. No longer the case when trying to run Maven from Eclipse. I got the dependencies all sorted and finally it's up and running again, and with the **debugger listening**. I do not entirely like Eclipse though, it feels... old. PHPStorm is much nicer
 
+---
+
 *21 Feb*
 
 I got rid of Eclipse, I couldn't stand its white blackground colour. I've installed **Intellij -from JetBrains**, like PHPStorm and Webstorm, which I've used A LOT. It feels so natural, as they share interface and keyboard shortcuts. NOW I feel that I could properly start coding in Java. I've moved the entire project to a more Spring-y way of doing it, following the PetClinic guide from Spring.
+
+---
 
 *22 Feb*
 
@@ -28,11 +38,15 @@ Okay now that my IDE is sorted, I feel that I can start properly coding at last!
 
 I've written a **Python script to scrape Wikipedia** for data about all towns and regions in Spain, and dump it to MySQL. I compared the data obtained with the official source from INE (Instituto Nacional de Estadistica) website and it's all good!
 
+---
+
 *23 Feb*
 
 All 3 adapters ['Jdbc', 'Jpa', 'SpringDataJpa'] up and running. I started with Jdbc, doing it the hard way to learn. Just the way I like. Then moved onto Hibernate, which is actually pretty nice. It feels sooo much like Doctrine. With Intellij I can just Alt+Spacebar and see what Annotations do anyways, so it doesn't seem "black magic" anymore.
 
 Also, just noticed that my town **Segura de los Baños** happened to be id. **6666** of all towns in Spain scraped with my Python script. HOW COOL IS THAT.
+
+---
 
 *24 Feb*
 
